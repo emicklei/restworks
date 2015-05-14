@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phw:BasicDialog 
+	xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="284" height="236"
+	xmlns:phw="com.philemonworks.flex.dialogs.*" 
+	title="Login"
+	showCloseButton="true"
+	creationComplete="userText.setFocus()">
+	<mx:Label x="10" y="47" text="{NLS.text('userid','User ID')}" />
+	<mx:Label x="10" y="73" text="{NLS.text('password','Password')}"/>
+	<mx:TextInput id="userText" x="74" y="45" width="180"/>
+	<mx:TextInput id="passwordText" x="74" y="73" width="180" displayAsPassword="true" enter="doOk()"/>
+	<mx:Button x="191" y="117" label="{NLS.text('cancel','Cancel')}"  click="closeThis()"/>
+	<mx:Button x="141" y="117" label="{NLS.text('ok','Ok')}"  click="doOk()"/>
+	<mx:Label x="10" y="10" text="{NLS.text('pleaselogin','Please Login')}" fontSize="11"/>
+	<mx:LinkButton x="10" y="164" label="{NLS.text('forgottenpassword','Forgotton Password')}?" color="#008040" click="doForgotPassword()"/>					
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.nls.NLS;				
+			import mx.managers.PopUpManager;
+			public var passwordForgotten:Boolean = false;
+			
+			public static function newFor(parent:DisplayObject):LoginDialog {
+				return LoginDialog(PopUpManager.createPopUp(parent, LoginDialog,true));	
+			}							
+			public function doForgotPassword():void {
+				passwordForgotten = true
+				super.doOk()
+			}
+		]]>
+	</mx:Script>
+</phw:BasicDialog>

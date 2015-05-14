@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phw:BasicDialog xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:phw="com.philemonworks.flex.dialogs.*" width="300" height="300"
+	showCloseButton="true" 
+	title="Please select from the list">
+	
+	<mx:VBox width="100%" height="100%">
+		<mx:Label id="listLabel" text="Items"/>	
+		<mx:List 
+			id="list" 
+			dataProvider="{items}" 
+			selectedIndex="{initialSelectionIndex}" 
+			labelField="{labelField}" 
+			height="100%" width="100%">
+		</mx:List>
+		<mx:HBox>
+			<mx:Label text="{NLS.text('search','Search')}"/>		
+			<mx:TextInput width="100%"/>
+		</mx:HBox>
+		<mx:HBox horizontalAlign="center" width="100%">
+			<mx:Button label="{NLS.text('ok','Ok')}" click="doOk()" />		
+			<mx:Button label="{NLS.text('cancel','Cancel')}" click="closeThis()"/>
+		</mx:HBox>
+	</mx:VBox>
+
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.nls.NLS;
+			import mx.managers.PopUpManager;
+			[Bindable]
+			public var items:Object;
+			[Bindable]
+			public var labelField:String;
+			[Bindable]
+			public var initialSelectionIndex:int = -1;
+			
+			
+			public static function newFor(parent:DisplayObject):ListSelectionDialog {
+				return ListSelectionDialog(PopUpManager.createPopUp(parent, ListSelectionDialog,true));	
+			}	
+			override protected function validateOk():Boolean {
+				if (!super.validateOk()) return false
+				return list.selectedItem != null
+			}	
+		]]>
+	</mx:Script>
+</phw:BasicDialog>

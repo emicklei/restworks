@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="com.philemonworks.flex.nls.NLSResourceBundle"/>
+<classEntry path="com.philemonworks.flex.net.Reply"/>
+<classEntry path="com.philemonworks.flex.events.ObjectDataEvent"/>
+<classEntry path="com.philemonworks.flex.dialogs.MessageDialog"/>
+<classEntry path="com.philemonworks.flex.dialogs.BasicDialog"/>
+<classEntry path="com.philemonworks.flex.net.RestFault"/>
+<classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
+<classEntry path="com.philemonworks.flex.util.Day"/>
+<classEntry path="com.philemonworks.flex.dialogs.LoginDialog"/>
+<classEntry path="com.philemonworks.flex.dialogs.ListSelectionDialog"/>
+<classEntry path="com.philemonworks.flex.navigation.PageNavigationManager"/>
+<classEntry path="com.philemonworks.flex.navigation.PageNavigator"/>
+<classEntry path="com.philemonworks.flex.util.XMLHelper"/>
+<classEntry path="com.philemonworks.flex.nls.NLSProvider"/>
+<classEntry path="com.philemonworks.flex.util.Randomizer"/>
+<classEntry path="com.philemonworks.flex.net.RestFaultDialog"/>
+<classEntry path="com.philemonworks.flex.net.Command"/>
+<classEntry path="com.philemonworks.flex.nls.NLS"/>
+<classEntry path="com.philemonworks.flex.navigation.PageNavigationBar"/>
+<classEntry path="com.philemonworks.flex.net.RestClient"/>
+<classEntry path="com.philemonworks.flex.nls.RecordingNLSWindow"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
+</flexLibProperties>

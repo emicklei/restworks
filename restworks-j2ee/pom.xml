@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.philemonworks</groupId>
+	<artifactId>restworks</artifactId>
+	<packaging>jar</packaging>
+	<version>1.2.2</version>
+	<name>RestWorks</name>
+	<description>Lightweight framework for REST style webapplications</description>
+	<url>http://www.philemonworks.com/restworks</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.philemonworks</groupId>
+			<artifactId>philemon-commons</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		
+	    <dependency>
+	      <groupId>qdox</groupId>
+	      <artifactId>qdox</artifactId>
+	      <version>1.6.1</version>
+	      <scope>provided</scope>  <!--  for development only -->
+	    </dependency>
+	        
+	    <dependency>
+	      <groupId>org.antlr</groupId>
+	      <artifactId>stringtemplate</artifactId>
+	      <version>3.0</version>
+	      <scope>provided</scope> <!--  for development only -->
+	    </dependency>
+    		
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.4</source>
+					<target>1.4</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+			    <artifactId>maven-assembly-plugin</artifactId>
+		        <configuration>
+		          <descriptorRefs>
+		            <descriptorRef>bin</descriptorRef>
+		          </descriptorRefs>
+		        </configuration>
+			</plugin>
+		</plugins>
+	</build>
+	  <reporting>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-pmd-plugin</artifactId>
+	      </plugin>
+	    </plugins>
+	  </reporting>	
+	<distributionManagement> 
+		<site>
+			<id>website-philemonworks</id>
+			<url>scp://s512.widexs.nl:14598/opt/sites/philemonworks.com/htdocs/restworks</url>
+		</site>
+		<repository>
+			<id>newbizz-repo</id>
+			<name>NewBizz Repository</name>
+			<url>scp://s512.widexs.nl:14598/opt/java/maven2-newbizz-repo</url>
+		</repository>
+	</distributionManagement> 	
+</project>

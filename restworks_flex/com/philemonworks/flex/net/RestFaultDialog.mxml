@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow 
+	title="Application Error Occurred"
+	xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="484" height="128" showCloseButton="true">
+	<mx:states>
+		<mx:State name="details">
+			<mx:SetProperty name="height" value="400"/>
+			<mx:AddChild position="lastChild">
+				<mx:TextArea height="200" backgroundColor="#fffbaa" text="{restfault.stack}" bottom="10" editable="false" right="10" left="10" wordWrap="false"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{button1}" name="label" value="Details &lt;&lt;"/>
+			<mx:AddChild position="lastChild">
+				<mx:Label x="10" y="77" text="Request" fontWeight="bold"/>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Label x="10" y="100" text="Method" fontWeight="bold"/>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Label id="request" text="{restfault.request}" right="10" y="77" left="78.5"/>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Label y="100" id="method" text="{restfault.method}" right="10" left="78.5"/>
+			</mx:AddChild>
+			<mx:SetProperty name="width" value="800"/>
+			<mx:AddChild position="lastChild">
+				<mx:Label x="10" y="124" text="Controller" fontWeight="bold"/>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Label y="124" text="{restfault.controller}" right="10" left="79"/>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+	<mx:Button x="155.5" y="46" label="Close" click="closeThis()" />
+	<mx:Button x="219.5" y="46" label="Details &gt;&gt;" click="doToggleShowDetails()"  id="button1"/>
+	<mx:Label text="{restfault.message}" top="10" left="57" right="10" id="reason" fontWeight="bold"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.dialogs.MessageDialog;
+			import mx.core.IFlexDisplayObject;
+			import mx.managers.PopUpManager;
+			
+			[Bindable]
+			private var restfault:Object;
+			
+			// show details by changing the state
+			private function doToggleShowDetails():void {
+				if (currentState == null) {
+					currentState = "details"
+				} else {
+					currentState = null
+				}
+			}
+			
+			// this is called from the buttons
+			private function closeThis():void {
+				PopUpManager.removePopUp(IFlexDisplayObject(this));
+			}
+			// this is called when the window is closed
+			private function closeFromPopup(event:Event):void {
+				this.closeThis();
+			}
+			public static function popup(parent:DisplayObject, restfault:Object):void {
+				var popup:RestFaultDialog = RestFaultDialog(PopUpManager.createPopUp(parent, RestFaultDialog,true));				
+				popup.restfault = restfault;
+				PopUpManager.centerPopUp(popup);								
+				popup.addEventListener("close", popup.closeFromPopup);
+			}
+		]]>
+	</mx:Script>
+	<mx:Image x="10" y="10" source="{MessageDialog.criticalSymbol}"/>
+	
+</mx:TitleWindow>
